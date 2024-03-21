@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', GuestHomeController::class)->name('guest.home');
 
-Route::get('/admin', AdminHomeController::class)->middleware(['auth', 'verified'])->name('admin.home');
 
 Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function(){
+    Route::get('', AdminHomeController::class)->name('home');
     Route::resource('words', WordController::class); 
 });
  
