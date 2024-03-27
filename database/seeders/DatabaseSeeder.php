@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,13 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Word::factory(30)->create();
+         \App\Models\Word::factory(10)->create();
+         
+         \App\Models\Link::factory(10)->create();
 
-         $this->call(LinkSeeder::class);
+        //  $this->call(LinkSeeder::class);
          
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
          ]);
+
+        $this->call(TagSeeder::class);
     }
 }
