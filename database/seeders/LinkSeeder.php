@@ -31,15 +31,6 @@ class LinkSeeder extends Seeder
             $new_link->url = $link['url'];
             $new_link->save();
 
-            // $word_links = [];
-            // foreach($word_ids as $word_id){
-            //     if(rand(0,1)) {
-            //         $word_links[] = $word_id;
-            //     } 
-                
-            // }
-
-            // $word_links = array_filter($word_ids, fn() => rand(0,1));
         }
     }
 }

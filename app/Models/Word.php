@@ -21,7 +21,7 @@ class Word extends Model
 
     public function getAbstract()
     {
-        $abstract = substr($this->definition, 0, 50) . '...';
+        $abstract = substr($this->definition, 0, 20) . '...';
         return $abstract;
     }
         
