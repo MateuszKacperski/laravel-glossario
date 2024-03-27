@@ -17,4 +17,12 @@ class Word extends Model
     {
         return $this->hasMany(Link::class);
     }
+
+    public function getAbstract()
+    {
+        $abstract = substr($this->definition, 0, 50) . '...';
+        return $abstract;
+    }
+        
+    
 }

@@ -22,6 +22,7 @@ class WordFactory extends Factory
             'term' => $term,
             'slug' => Str::slug($term),
             'definition' => fake()->paragraphs(5, true),
+            
         ];
     }
 }
