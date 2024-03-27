@@ -29,7 +29,7 @@
 
             <div class="mb-3">
                 <label for="definition" class="form-label">Definizione</label>
-                <textarea class="form-control @error('definition') is-invalid @elseif(old('definition', '')) is-valid @enderror" placeholder="Definizione del termine" id="definition" rows="5" name="definition">{{old('term', $word->term)}}</textarea>
+                <textarea class="form-control @error('definition') is-invalid @elseif(old('definition', '')) is-valid @enderror" placeholder="Definizione del termine" id="definition" rows="5" name="definition">{{old('definition', $word->definition)}}</textarea>
                 @error('definition')
                     <div class="invalid-feedback">
                         {{$message}}

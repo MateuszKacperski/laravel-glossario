@@ -4,7 +4,7 @@
 
 @section('content')
 
-<header class="d-flex align-tiem-center justify-content-between">
+<header>
     <h1 class="text-center my-4">Parole</h1>
 
 </header>
