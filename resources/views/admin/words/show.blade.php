@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('content')
 <div class="card">
     <div class="card-body">
       <h5 class="card-title">{{$word->term}}</h5>
@@ -8,3 +8,4 @@
       <a href="{{route('admin.words.index')}}" class="card-link">Torna alla lista delle parole</a>
     </div>
   </div>
+  @endsection
