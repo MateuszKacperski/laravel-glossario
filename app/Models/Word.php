@@ -10,4 +10,6 @@ class Word extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['term', 'slug', 'definition'];
 }
