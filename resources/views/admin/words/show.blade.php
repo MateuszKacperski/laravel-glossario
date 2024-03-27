@@ -13,9 +13,9 @@
         <form id="delete-form" action="{{route('admin.words.destroy', $word)}}" method="POST">
             @csrf
             @method('DELETE')
-            <input class="btn btn-danger" type="submit" value="Delete">
+            <button class="btn btn-danger"><i class="fas fa-trash-can me-2"></i>Elimina</button>
             </form>
-            <a class="btn btn-warning" href="{{route('admin.words.edit', $word)}}">Modifica</a>
+            <a class="btn btn-warning" href="{{route('admin.words.edit', $word)}}"><i class="fas fa-pencil me-2"></i>Modifica</a>
         </div>
     </div>
     </div>

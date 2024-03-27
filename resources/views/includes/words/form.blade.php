@@ -10,7 +10,7 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="term" class="form-label ">Termine</label>
-                <input type="email" class="form-control @error('term') is-invalid @elseif(old('term', '')) is-valid @enderror" name="term" id="term"
+                <input type="text" class="form-control @error('term') is-invalid @elseif(old('term', '')) is-valid @enderror" name="term" id="term"
                     placeholder="Coalishing null Operator" value="{{old('term', $word->term)}}">
                 @error('term')
                     <div class="invalid-feedback">
