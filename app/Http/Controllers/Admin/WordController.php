@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Word;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 class WordController extends Controller
 {
     /**
@@ -29,7 +31,26 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'term' => 'required|string',
+            'definition' => 'required|string'
+        ], [
+            'term.required' => 'Il titolo è obbligatorio',
+            'definition.required' => 'La definizione è obbligatoria',
+        ]);
+
+        $data = $request->all();
+
+        $word = new Word();
+
+        $word->fill($data);
+
+        $word->slug = Str::slug($word->term);
+
+        $word->save();
+
+        return to_route('admin.words.show', $word);
     }
 
     /**
@@ -53,7 +74,23 @@ class WordController extends Controller
      */
     public function update(Request $request, Word $word)
     {
-        //
+
+        $request->validate([
+            'term' => 'required|string',
+            'definition' => 'required|string'
+        ], [
+            'term.required' => 'Il titolo è obbligatorio',
+            'definition.required' => 'La definizione è obbligatoria',
+        ]);
+
+
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($data['term']);
+
+        $word->update($data);
+
+        return to_route('admin.words.show', $word);
     }
 
     /**
