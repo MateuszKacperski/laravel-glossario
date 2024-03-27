@@ -19,7 +19,7 @@
                 </li>
                 @auth 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.words.index') }}">{{ __('Words') }}</a>
+                    <a class="nav-link @if (Request::is('admin/words*')) active @endif" href="{{route('admin.words.index') }}">{{ __('Words') }}</a>
                 </li>
                 @endauth
             </ul>

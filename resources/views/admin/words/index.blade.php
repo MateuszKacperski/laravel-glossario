@@ -14,8 +14,8 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Links</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Parola</th>
-                <th scope="col">Slug</th>
                 <th scope="col">Definizione</th>
                 <th scope="col">Creata il</th>
                 <th scope="col">Modificata il</th>
@@ -38,11 +38,17 @@
                         Nessun link
                     @endforelse
                     </td>
+                    <td>
+                    @forelse ($word->tags as $tag)
+                         <span class="badge rounded-pill" style="background-color: {{$tag->color}}">{{ $tag->label }}</span> 
+                    @empty
+                        Nessun tag
+                    @endforelse
+                    </td>
                     <td>{{ $word->term }}</td>
-                    <td>{{ $word->slug }}</td>
                     <td>{{ $word->getAbstract() }}</td>
-                    <td>{{ $word->created_at }}</td>
-                    <td>{{ $word->updated_at }}</td>
+                    <td>{{ $word->getDate($word->created_at) }}</td>
+                    <td>{{ $word->getDate($word->updated_at) }}</td>
                     <td>
                         <div class="d-flex justify-content-end gap-2">
                             <a href="{{ route('admin.words.show', $word) }}" class="btn btn-sm btn-primary"><i
