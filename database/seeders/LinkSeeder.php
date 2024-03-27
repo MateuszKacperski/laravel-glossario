@@ -20,7 +20,7 @@ class LinkSeeder extends Seeder
 
         foreach($links as $link){
             $new_link = new Link();
-            
+            //todo 
         }
     }
 }
