@@ -12,4 +12,9 @@ class Word extends Model
     use SoftDeletes;
 
     protected $fillable = ['term', 'slug', 'definition'];
+
+    public function links()
+    {
+        return $this->hasMany(Link::class);
+    }
 }
