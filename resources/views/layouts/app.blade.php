@@ -30,7 +30,7 @@
 
    @include('includes.navbar')
 
-        <main class="container">
+        <main class="container my-5">
             @yield('content')
         </main>
     </div>
