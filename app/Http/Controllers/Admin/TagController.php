@@ -77,7 +77,7 @@ class TagController extends Controller
         $request->validate([
             'label' =>
             ['required', 'string', Rule::unique('tags')->ignore($tag->id)],
-            'color' => 'requied|hex_color',
+            'color' => 'required|hex_color',
 
         ], [
             'label.required' => 'Inserisci l\'etichetta del tag',

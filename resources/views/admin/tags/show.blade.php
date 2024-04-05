@@ -13,9 +13,9 @@
                 Colore:
             </strong>
             @if (Str::startsWith($tag->color, '#'))
-                <div class="rounded display-color" style="background-color: {{ $tag->color }}"></div>
+                <div class="p-3 rounded display-color" style="background-color: {{ $tag->color }}"></div>
             @else
-                <div class="rounded display-color bg-{{ $tag->color }}"></div>
+                <div class="p-3 rounded display-color bg-{{ $tag->color }}"></div>
             @endif
         </div>
     </div>

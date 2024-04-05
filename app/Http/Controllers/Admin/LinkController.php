@@ -50,7 +50,7 @@ class LinkController extends Controller
         $link->fill($data);
         $link->save();
 
-        return to_route('admin.links.create');
+        return to_route('admin.links.show', $link->id);
     }
 
     /**
@@ -89,7 +89,7 @@ class LinkController extends Controller
         $data = $request->all();
         $link->update($data);
 
-        return to_route('admin.links.edit', $link->id);
+        return to_route('admin.links.show', $link->id);
     }
 
     /**
@@ -98,6 +98,6 @@ class LinkController extends Controller
     public function destroy(Link $link)
     {
         $link->delete();
-        return to_route('admin.words.index');
+        return to_route('admin.links.index');
     }
 }

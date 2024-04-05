@@ -32,7 +32,7 @@
                     <td>{{ $link->name }}</td>
                     <td>{{ $link->url }}</td>
                     <td>{{ $link->getDate($link->created_at) }}</td>
-                    <td>{{ $link->getDate($word->updated_at) }}</td>
+                    <td>{{ $link->getDate($link->updated_at) }}</td>
                     <td>
                         <div class="d-flex justify-content-end gap-2">
                             <a href="{{ route('admin.links.show', $link) }}" class="btn btn-sm btn-primary"><i
