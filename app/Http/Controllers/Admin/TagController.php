@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Link;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class LinkController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class LinkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Link $link)
+    public function show(Tag $tag)
     {
         //
     }
@@ -42,7 +43,7 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Link $link)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -50,7 +51,7 @@ class LinkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -58,7 +59,7 @@ class LinkController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Link $link)
+    public function destroy(Tag $tag)
     {
         //
     }
