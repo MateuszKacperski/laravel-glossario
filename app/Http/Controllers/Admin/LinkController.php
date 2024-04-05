@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LinkController extends Controller
 {
@@ -12,7 +13,9 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+
+        $links = Link::all();
+        return view('admin.links.index', compact('links'));
     }
 
     /**
@@ -36,7 +39,7 @@ class LinkController extends Controller
      */
     public function show(Link $link)
     {
-        //
+        return view('admin.links.show', compact('link'));
     }
 
     /**
@@ -60,6 +63,7 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        $link->delete();
+        return to_route('admin.words.index');
     }
 }

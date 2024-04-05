@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link @if (Request::is('admin/words*')) active @endif" href="{{route('admin.words.index') }}">{{ __('Words') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @if (Request::is('admin/links*')) active @endif" href="{{route('admin.links.index') }}">{{ __('Links') }}</a>
+                </li>
                 @endauth
             </ul>
 
