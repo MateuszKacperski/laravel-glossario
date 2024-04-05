@@ -29,6 +29,9 @@
                         <a class="nav-link @if (Request::is('admin/tags*')) active @endif"
                             href="{{ route('admin.tags.index') }}">{{ __('Tags') }}</a>
                     </li>
+                <li class="nav-item">
+                    <a class="nav-link @if (Request::is('admin/links*')) active @endif" href="{{route('admin.links.index') }}">{{ __('Links') }}</a>
+                </li>
                 @endauth
             </ul>
 

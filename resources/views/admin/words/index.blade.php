@@ -39,11 +39,13 @@
                     @endforelse
                     </td>
                     <td>
+                    @if($word->tags)
                     @forelse ($word->tags as $tag)
                          <span class="badge rounded-pill" style="background-color: {{$tag->color}}">{{ $tag->label }}</span> 
-                    @empty
-                        Nessun tag
-                    @endforelse
+                         @empty
+                         Nessun tag
+                         @endforelse
+                         @endif
                     </td>
                     <td>{{ $word->term }}</td>
                     <td>{{ $word->getAbstract() }}</td>
