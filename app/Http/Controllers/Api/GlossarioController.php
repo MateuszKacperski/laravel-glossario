@@ -18,9 +18,9 @@ class GlossarioController extends Controller
         return response()->json($words);
     }
 
-    public function show(Word $word)
+    public function show(string $word)
     {
-        $word = Word::with('tags')->with('links')->first($word->id);
+        $word = Word::with('tags')->with('links')->find($word);
 
         if (!$word) return response(null, 404);
 
