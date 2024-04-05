@@ -23,7 +23,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.links.create');
     }
 
     /**
@@ -31,7 +31,26 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'url' => 'required|string',
+
+        ], [
+            'name.required' => 'Inserisci il nome del link',
+            'url.required' => 'Inserisci l\'url del link',
+            'name.string' => 'Il formato del nome non è corretto',
+            'url.string' => 'Il formato del link non è corretto',
+
+        ]);
+
+        $data = $request->all();
+
+        $link = new Link();
+
+        $link->fill($data);
+        $link->save();
+
+        return to_route('admin.links.create');
     }
 
     /**
@@ -47,7 +66,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        //
+        return view('admin.links.edit', compact('link'));
     }
 
     /**
@@ -55,7 +74,22 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'url' => 'required|string',
+
+        ], [
+            'name.required' => 'Inserisci il nome del link',
+            'url.required' => 'Inserisci l\'url del link',
+            'name.string' => 'Il formato del nome non è corretto',
+            'url.string' => 'Il formato del link non è corretto',
+
+        ]);
+
+        $data = $request->all();
+        $link->update($data);
+
+        return to_route('admin.links.edit', $link->id);
     }
 
     /**
