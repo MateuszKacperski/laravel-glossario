@@ -9,15 +9,14 @@
 @forelse ($words as $word)
 <div class="card my-5">
     <div class="card-header d-flex align-items-center justify-content-between">
-        {{$word->term}}
-     
+        <h4 class="card-title">
+            {{$word->term}}
+        </h4>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h5 class="card-title">{{$word->term}}</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">{{$word->created_at}}</h6>
-                <p class="card-text">{{$word->description}}</p>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{$word->definition}}</h6>
             </div>
         </div>
             

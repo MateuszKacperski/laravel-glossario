@@ -33,7 +33,9 @@
                     <th scope="row">{{ $word->id }}</th>
                     <td>
                     @forelse ($word->links as $link)
-                          <a href="{{$link->url}}">{{ $link->name }}</a>
+                    <div>
+                        <a href="{{$link->url}}">{{ $link->name }}</a>
+                    </div>
                     @empty
                         Nessun link
                     @endforelse
