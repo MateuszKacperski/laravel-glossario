@@ -6,6 +6,7 @@ use App\Models\Word;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Link;
 use App\Models\Tag;
 use Illuminate\Support\Arr;
 
@@ -45,7 +46,6 @@ class WordController extends Controller
         ]);
 
         $data = $request->all();
-
         $word = new Word();
 
         $word->fill($data);
@@ -58,6 +58,15 @@ class WordController extends Controller
 
         if (Arr::exists($data, 'tags')) {
             $word->tags()->attach($data['tags']);
+        }
+
+        if($data['link']) {
+            $new_link = new Link();
+            $new_link->word_id = $word->id;
+            $new_link->url = $data['link'];
+            $new_link->name = $data['title'];
+
+            $new_link->save();
         }
 
         return to_route('admin.words.show', $word);
@@ -107,6 +116,17 @@ class WordController extends Controller
         }
         if (Arr::exists($data, 'tags')) {
             $word->tags()->sync($data['tags']);
+        }
+
+        $word->links()->delete();
+
+        if ($data['link']) {
+            $new_link = new Link();
+            $new_link->word_id = $word->id;
+            $new_link->url = $data['link'];
+            $new_link->name = $data['title'];
+
+            $new_link->save();
         }
 
         return to_route('admin.words.show', $word);
