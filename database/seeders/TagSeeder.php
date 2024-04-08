@@ -41,11 +41,11 @@ class TagSeeder extends Seeder
 
             
 
-            $words_tag = [];
-            foreach ($word_ids as $word_id) {
-                if (rand(0, 1)) $words_tag[] = $word_id;
-            }
-            $new_tag->words()->attach($words_tag);
+            // $words_tag = [];
+            // foreach ($word_ids as $word_id) {
+            //     if (rand(0, 1)) $words_tag[] = $word_id;
+            // }
+            // $new_tag->words()->attach($words_tag);
             
         }
 

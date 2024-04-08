@@ -13,9 +13,9 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Links</th>
-                <th scope="col">Tags</th>
                 <th scope="col">Parola</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Links</th>
                 <th scope="col">Definizione</th>
                 <th scope="col">Creata il</th>
                 <th scope="col">Modificata il</th>
@@ -31,15 +31,8 @@
             @forelse($words as $word)
                 <tr>
                     <th scope="row">{{ $word->id }}</th>
-                    <td>
-                    @forelse ($word->links as $link)
-                    <div>
-                        <a href="{{$link->url}}">{{ $link->name }}</a>
-                    </div>
-                    @empty
-                        Nessun link
-                    @endforelse
-                    </td>
+                    <td>{{ $word->term }}</td>
+                    
                     <td>
                     @if($word->tags)
                     @forelse ($word->tags as $tag)
@@ -49,7 +42,16 @@
                          @endforelse
                          @endif
                     </td>
-                    <td>{{ $word->term }}</td>
+                    <td>
+                    @forelse ($word->links as $link)
+                    <div>
+                        <a href="{{$link->url}}">{{ $link->name }}</a>
+                    </div>
+                    @empty
+                        Nessun link
+                    @endforelse
+                    </td>
+                    
                     <td>{{ $word->getAbstract() }}</td>
                     <td>{{ $word->getDate($word->created_at) }}</td>
                     <td>{{ $word->getDate($word->updated_at) }}</td>

@@ -37,6 +37,34 @@
                 @enderror
             </div>
         </div>
+        
+        <div class="col-12">
+            <div class="mb-3">
+
+                @foreach ($tags as $tag)
+                <div class="form-check form-check-inline @error('tags') is-invalid @enderror">
+                    <input class="form-check-input" name="tags[]" 
+                    type="checkbox" id="tag-{{$tag->id}}" value="{{$tag->id}}"
+                    @if(in_array($tag->id, old('tags', $previous_tags ?? []))) checked @endif>
+                    <label class="form-check-label" for="tag-{{$tag->id}}">{{$tag->label}}</label>
+                </div>
+                @endforeach
+                @error('tags')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                @foreach ($word->links as $link)
+                    <label for="link" class="form-label">Link</label>
+                    <input type="text" class="form-control"  id="link" value="{{old('link', $word->link)}}">
+                @endforeach
+                
+            </div>
+        </div>
         <div class="col-12 d-flex justify-content-end">
              <div class="mb-3 d-flex gap-3">
                 <a href="{{route('admin.words.index')}}" class="btn btn-secondary">Torna indietro</a>
@@ -47,5 +75,6 @@
                 @endif
             </div>
         </div>
+        
     </div>
 </form>

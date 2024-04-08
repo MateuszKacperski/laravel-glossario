@@ -6,6 +6,8 @@ use App\Models\Word;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
+use Illuminate\Support\Arr;
 
 class WordController extends Controller
 {
@@ -24,7 +26,8 @@ class WordController extends Controller
     public function create()
     {
         $word = new Word();
-        return view('admin.words.create', compact('word'));
+        $tags = Tag::select('label', 'id')->get();
+        return view('admin.words.create', compact('word', 'tags'));
     }
 
     /**
@@ -49,7 +52,13 @@ class WordController extends Controller
 
         $word->slug = Str::slug($word->term);
 
+        
+
         $word->save();
+
+        if (Arr::exists($data, 'tags')) {
+            $word->tags()->attach($data['tags']);
+        }
 
         return to_route('admin.words.show', $word);
     }
@@ -67,7 +76,9 @@ class WordController extends Controller
      */
     public function edit(Word $word)
     {
-        return view('admin.words.edit', compact('word'));
+        $tags = Tag::select('label', 'id')->get();
+        $previous_tags = $word->tags->pluck('id')->toArray();
+        return view('admin.words.edit', compact('word', 'tags', 'previous_tags'));
     }
 
     /**
@@ -90,6 +101,13 @@ class WordController extends Controller
         $data['slug'] = Str::slug($data['term']);
 
         $word->update($data);
+
+        if(!Arr::exists($data, 'tags')) {
+            $word->tags()->detach();
+        }
+        if (Arr::exists($data, 'tags')) {
+            $word->tags()->sync($data['tags']);
+        }
 
         return to_route('admin.words.show', $word);
     }

@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col d-flex align-items-center justify-content-end gap-3">
-                <button class="btn btn-primary" type="button">Torna indietro</button>
+                <a class="btn btn-primary" type="button" href="{{ route('admin.links.show', $link) }}">Torna indietro</a>
                 <button class="btn btn-success"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
             </div>
         </div>
